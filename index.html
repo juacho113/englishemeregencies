@@ -5,666 +5,665 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Emergencies — No Excuses</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --gray: #888;
-    --light-gray: #e8e8e0;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--white);
-    color: var(--black);
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-    font-size: 18px;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 4rem;
-    background: var(--white);
-    border-bottom: 1px solid var(--black);
-  }
-
-  .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.12em;
-    color: var(--black);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .logo-badge {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    padding: 0.15rem 0.45rem;
-    border-radius: 2px;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  nav ul a {
-    text-decoration: none;
-    color: var(--black);
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: opacity 0.2s;
-  }
-
-  nav ul a:hover { opacity: 0.45; }
-
-  .nav-cta {
-    background: var(--black) !important;
-    color: var(--white) !important;
-    padding: 0.55rem 1.4rem;
-    border-radius: 2px;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: #333 !important; opacity: 1 !important; }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    padding-top: 72px;
-    border-bottom: 1px solid var(--black);
-  }
-
-  .hero-left {
-    padding: 6rem 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--black);
-  }
-
-  .hero-tag {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 1px;
-    background: var(--gray);
-  }
-
-  .hero-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4.5rem, 8vw, 8rem);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-headline em {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.85em;
-    color: #222;
-  }
-
-  .hero-sub {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.65;
-    max-width: 400px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .hero-sub strong { color: var(--black); font-weight: 500; }
-
-  .slogan {
-    display: inline-block;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.18em;
-    border: 2px solid var(--black);
-    padding: 0.4rem 1.2rem;
-    margin-bottom: 2.5rem;
-    transform: rotate(-1deg);
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-  }
-
-  .slogan::after {
-    content: 'NO EXCUSES';
-    position: absolute;
-    inset: 0;
-    background: var(--black);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-
-  .slogan:hover::after { opacity: 1; }
-
-  .hero-btns {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--black);
-    color: var(--white);
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s;
-  }
-
-  .btn-primary:hover { background: #333; }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--black);
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border: 1px solid var(--black);
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .btn-outline:hover { background: var(--black); color: var(--white); }
-
-  .hero-right {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    background: #1a1a1a;
-    overflow: hidden;
-  }
-
-  .hero-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%) contrast(1.1);
-    opacity: 0.85;
-    transition: opacity 0.4s, transform 0.6s;
-  }
-
-  .hero-right img:hover { opacity: 1; transform: scale(1.03); }
-
-  .hero-right-top { overflow: hidden; border-bottom: 1px solid #333; }
-
-  .hero-right-bottom { overflow: hidden; position: relative; }
-
-  .overlay-text {
-    position: absolute;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    color: rgba(255,255,255,0.55);
-  }
-
-  /* ── STATS ── */
-  .stats-bar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid var(--black);
-    background: var(--black);
-    color: var(--white);
-  }
-
-  .stat {
-    padding: 2.5rem 3rem;
-    border-right: 1px solid #333;
-  }
-
-  .stat:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-
-  .stat-label {
-    font-size: 1rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #aaa;
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    padding: 6rem 4rem;
-    border-bottom: 1px solid var(--black);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .section-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    color: var(--gray);
-  }
-
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    letter-spacing: 0.04em;
-    line-height: 1;
-  }
-
-  /* ── PROGRAMS ── */
-  .programs-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: 1px solid var(--black);
-  }
-
-  .program-card {
-    padding: 3rem 2.5rem;
-    border-right: 1px solid var(--black);
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-  }
-
-  .program-card:last-child { border-right: none; }
-
-  .program-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 0;
-    background: var(--black);
-    transition: height 0.4s ease;
-    z-index: 0;
-  }
-
-  .program-card:hover::before { height: 100%; }
-
-  .program-card > * { position: relative; z-index: 1; }
-
-  .program-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; transition: color 0.3s; }
-
-  .program-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.8rem;
-    transition: color 0.3s;
-  }
-
-  .program-desc {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-    transition: color 0.3s;
-  }
-
-  .program-tag {
-    display: inline-block;
-    font-size: 0.88rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: 1px solid var(--black);
-    padding: 0.25rem 0.7rem;
-    transition: border-color 0.3s, color 0.3s;
-  }
-
-  .program-card:hover .program-name,
-  .program-card:hover .program-desc { color: var(--white); }
-
-  .program-card:hover .program-desc { color: #ccc; }
-
-  .program-card:hover .program-tag {
-    border-color: rgba(255,255,255,0.35);
-    color: var(--white);
-  }
-
-  /* ── METHODOLOGY ── */
-  .methodology {
-    background: var(--black);
-    color: var(--white);
-  }
-
-  .methodology .section-num { color: #555; }
-  .methodology .section-title { color: var(--white); }
-
-  .method-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-top: 1rem;
-  }
-
-  .method-left {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-    line-height: 1.5;
-    font-style: italic;
-    color: #bbb;
-    border-left: 3px solid #444;
-    padding-left: 2rem;
-  }
-
-  .method-left strong {
-    color: var(--white);
-    font-style: normal;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 0.06em;
-    display: block;
-    margin-top: 1.2rem;
-  }
-
-  .method-right { color: #aaa; font-weight: 300; line-height: 1.8; }
-
-  .method-right p { margin-bottom: 1.2rem; font-size: 1.1rem; }
-
-  .method-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 2rem;
-  }
-
-  .pill {
-    border: 1px solid #444;
-    color: #aaa;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    transition: border-color 0.2s, color 0.2s;
-    cursor: default;
-  }
-
-  .pill:hover { border-color: var(--white); color: var(--white); }
-
-  /* ── MARQUEE ── */
-  .marquee-wrap {
-    background: var(--black);
-    overflow: hidden;
-    padding: 0.85rem 0;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-  }
-
-  .marquee-inner {
-    display: flex;
-    gap: 3rem;
-    animation: marquee 20s linear infinite;
-    white-space: nowrap;
-  }
-
-  .marquee-item {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.18em;
-    color: #666;
-    flex-shrink: 0;
-  }
-
-  .marquee-dot { color: #333; }
-
-  @keyframes marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ── CONTACT ── */
-  .contact-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .contact-left {
-    padding: 5rem 4rem;
-    border-right: 1px solid var(--black);
-  }
-
-  .contact-right {
-    padding: 5rem 4rem;
-    background: var(--black);
-    color: var(--white);
-  }
-
-  .contact-detail { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
-
-  .contact-label {
-    font-size: 0.88rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 0.3rem;
-  }
-
-  .contact-value {
-    font-size: 1.25rem;
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 400;
-    transition: opacity 0.2s;
-    display: block;
-  }
-
-  .contact-value:hover { opacity: 0.6; }
-
-  .contact-form { margin-top: 2.5rem; }
-
-  .form-group { margin-bottom: 1.2rem; }
-
-  .form-group label {
-    display: block;
-    font-size: 0.88rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 0.4rem;
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1px solid #ddd;
-    background: transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    color: var(--black);
-    outline: none;
-    border-radius: 0;
-    appearance: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--black);
-    box-shadow: 3px 3px 0 var(--black);
-  }
-
-  .form-group textarea { height: 110px; resize: vertical; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    color: var(--white);
-    padding: 2.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #222;
-  }
-
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.15em;
-  }
-
-  .footer-copy { font-size: 1rem; color: #555; }
-
-  /* ── FADE-UP ── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(22px);
-    animation: fadeUp 0.7s forwards;
-  }
-  @keyframes fadeUp { to { opacity: 1; transform: none; } }
-  .fade-up:nth-child(1) { animation-delay: 0.05s; }
-  .fade-up:nth-child(2) { animation-delay: 0.15s; }
-  .fade-up:nth-child(3) { animation-delay: 0.25s; }
-  .fade-up:nth-child(4) { animation-delay: 0.35s; }
-  .fade-up:nth-child(5) { animation-delay: 0.45s; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { display: none; }
-
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 3rem 1.5rem; border-right: none; }
-    .hero-right { min-height: 55vw; grid-template-rows: 1fr; }
-    .hero-right-bottom { display: none; }
-
-    .stats-bar { grid-template-columns: 1fr; }
-    .stat { border-right: none; border-bottom: 1px solid #333; padding: 1.8rem 1.5rem; }
-
-    .section { padding: 3.5rem 1.5rem; }
-    .programs-grid { grid-template-columns: 1fr; }
-    .program-card { border-right: none; border-bottom: 1px solid var(--black); }
-
-    .method-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
-    .contact-wrap { grid-template-columns: 1fr; }
-    .contact-left { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--black); }
-    .contact-right { padding: 3rem 1.5rem; }
-
-    footer { flex-direction: column; gap: 0.6rem; text-align: center; padding: 2rem 1.5rem; }
-  }
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black: #0d0d0d;
+  --white: #f4f4ef;
+  --gray:  #777;
+  --max:   1280px;
+  --side:  clamp(1.5rem, 5vw, 6rem);
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;          /* hard minimum base */
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── CONTAINER ── */
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--side);
+}
+
+/* ══════════════════
+   NAV
+══════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 2px solid var(--black);
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1.2rem var(--side);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.12em;
+  color: var(--black);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.nav-logo .badge {
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+nav ul a {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  transition: opacity .2s;
+}
+nav ul a:hover { opacity: .4; }
+.nav-cta {
+  background: var(--black) !important;
+  color: var(--white) !important;
+  padding: 0.6rem 1.6rem !important;
+  border-radius: 3px;
+}
+.nav-cta:hover { opacity: .75 !important; }
+
+/* ══════════════════
+   HERO
+══════════════════ */
+.hero {
+  min-height: 100vh;
+  padding-top: 76px;
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  border-bottom: 2px solid var(--black);
+}
+.hero-body {
+  padding: 5rem var(--side);
+  max-width: calc(var(--max) - 260px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.2rem;
+  border-right: 2px solid var(--black);
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px; height: 2px;
+  background: var(--gray);
+  flex-shrink: 0;
+}
+.hero-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5.5rem, 10vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+}
+.hero-h1 em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.82em;
+  color: #333;
+}
+.hero-p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.75;
+  max-width: 580px;
+}
+.hero-p strong { color: var(--black); font-weight: 700; }
+
+.slogan-box {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  letter-spacing: 0.22em;
+  border: 3px solid var(--black);
+  padding: 0.5rem 1.6rem;
+  transform: rotate(-1.2deg);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.slogan-box::after {
+  content: 'NO EXCUSES';
+  position: absolute; inset: 0;
+  background: var(--black); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .25s;
+}
+.slogan-box:hover::after { opacity: 1; }
+
+.hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+
+.btn {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2.6rem;
+  border: 2.5px solid var(--black);
+  display: inline-block;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-filled { background: var(--black); color: var(--white); }
+.btn-filled:hover { background: #2a2a2a; }
+.btn-ghost  { background: transparent; color: var(--black); }
+.btn-ghost:hover { background: var(--black); color: var(--white); }
+
+/* photo strip */
+.hero-photos {
+  background: #111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.hero-photos img {
+  flex: 1;
+  width: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.15);
+  opacity: .8;
+  transition: opacity .4s, transform .5s;
+}
+.hero-photos img:hover { opacity: 1; transform: scale(1.04); }
+.hero-photos img:first-child { border-bottom: 1px solid #2a2a2a; }
+
+/* ══════════════════
+   MARQUEE
+══════════════════ */
+.marquee {
+  background: var(--black);
+  overflow: hidden;
+  padding: 1.1rem 0;
+  border-bottom: 2px solid #1a1a1a;
+}
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: scroll 24s linear infinite;
+}
+.marquee-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: #555;
+  flex-shrink: 0;
+}
+.marquee-dot { color: #2e2e2e; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* ══════════════════
+   STATS
+══════════════════ */
+.stats {
+  background: var(--black);
+  color: var(--white);
+  border-bottom: 2px solid var(--black);
+}
+.stats-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--side);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.stat-cell {
+  padding: 4rem 0;
+  padding-right: 3rem;
+  border-right: 1px solid #222;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell + .stat-cell { padding-left: 3rem; }
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stat-lbl {
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #777;
+  font-weight: 400;
+}
+
+/* ══════════════════
+   SECTION BASE
+══════════════════ */
+.section {
+  border-bottom: 2px solid var(--black);
+  padding: 6rem 0;
+}
+.sec-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--side);
+}
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  margin-bottom: 4rem;
+}
+.sec-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: #bbb;
+}
+.sec-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* ══════════════════
+   PROGRAMS
+══════════════════ */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid var(--black);
+}
+.prog-card {
+  padding: 3.5rem 3rem;
+  border-right: 2px solid var(--black);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.prog-card:last-child { border-right: none; }
+.prog-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 0;
+  background: var(--black);
+  transition: height .4s ease;
+  z-index: 0;
+}
+.prog-card:hover::before { height: 100%; }
+.prog-card > * { position: relative; z-index: 1; }
+
+.prog-icon { font-size: 3rem; display: block; margin-bottom: 1.5rem; }
+
+.prog-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+  transition: color .3s;
+}
+.prog-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  transition: color .3s;
+}
+.prog-tag {
+  display: inline-block;
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: 2px solid var(--black);
+  padding: 0.35rem 1rem;
+  transition: border-color .3s, color .3s;
+}
+.prog-card:hover .prog-name,
+.prog-card:hover .prog-icon { color: var(--white); }
+.prog-card:hover .prog-desc  { color: #ccc; }
+.prog-card:hover .prog-tag   { border-color: rgba(255,255,255,.3); color: var(--white); }
+
+.prog-note {
+  margin-top: 2.2rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #999;
+}
+
+/* ══════════════════
+   METHODOLOGY
+══════════════════ */
+.method-section { background: var(--black); color: var(--white); }
+.method-section .sec-num  { color: #444; }
+.method-section .sec-title { color: var(--white); }
+
+.method-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.method-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  color: #bbb;
+  line-height: 1.55;
+  border-left: 3px solid #333;
+  padding-left: 2rem;
+}
+.method-quote strong {
+  display: block;
+  margin-top: 1.2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: normal;
+  font-size: 1.4em;
+  letter-spacing: 0.07em;
+  color: var(--white);
+}
+.method-text p {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: #aaa;
+  line-height: 1.8;
+  margin-bottom: 1.3rem;
+}
+.pills { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
+.pill {
+  border: 1.5px solid #333;
+  color: #999;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.45rem 1.2rem;
+  border-radius: 100px;
+  cursor: default;
+  transition: border-color .2s, color .2s;
+}
+.pill:hover { border-color: var(--white); color: var(--white); }
+
+/* ══════════════════
+   CONTACT
+══════════════════ */
+.contact-section {
+  border-bottom: 2px solid var(--black);
+}
+.contact-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.contact-left {
+  padding: 6rem var(--side);
+  border-right: 2px solid var(--black);
+  max-width: calc(var(--max) / 2 + var(--side));
+  margin-left: auto;
+}
+.contact-right {
+  padding: 6rem var(--side);
+  background: var(--black);
+  color: var(--white);
+}
+
+.contact-intro {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+/* form */
+.form { display: flex; flex-direction: column; gap: 1.4rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.field { display: flex; flex-direction: column; gap: 0.5rem; }
+.field label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.field input,
+.field textarea,
+.field select {
+  padding: 1rem 1.2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  border: 2px solid #ccc;
+  background: transparent;
+  color: var(--black);
+  outline: none;
+  border-radius: 0;
+  appearance: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--black);
+  box-shadow: 4px 4px 0 var(--black);
+}
+.field textarea { height: 130px; resize: vertical; }
+
+/* contact info */
+.c-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 3rem;
+}
+.c-items { display: flex; flex-direction: column; gap: 2.5rem; }
+.c-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+.c-value {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  transition: opacity .2s;
+}
+.c-value:hover { opacity: .6; }
+
+.big-slogan {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #1a1a1a;
+}
+.big-slogan-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 7vw, 6.5rem);
+  letter-spacing: 0.04em;
+  color: #181818;
+  line-height: 0.95;
+}
+.big-slogan-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #444;
+  margin-top: 1rem;
+}
+
+/* ══════════════════
+   FOOTER
+══════════════════ */
+footer {
+  background: var(--black);
+  color: var(--white);
+  border-top: 2px solid #111;
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2.8rem var(--side);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.14em;
+}
+.footer-copy {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ══════════════════
+   SCROLL REVEAL
+══════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* ══════════════════
+   RESPONSIVE
+══════════════════ */
+@media (max-width: 960px) {
+  body { font-size: 18px; }
+
+  nav ul { display: none; }
+
+  .hero { grid-template-columns: 1fr; }
+  .hero-body { padding: 3.5rem 1.5rem; border-right: none; }
+  .hero-photos { height: 55vw; flex-direction: row; }
+  .hero-photos img:first-child { border-bottom: none; border-right: 1px solid #2a2a2a; }
+
+  .stats-inner { grid-template-columns: 1fr; }
+  .stat-cell { border-right: none; border-bottom: 1px solid #222; padding: 2.5rem 0; }
+  .stat-cell + .stat-cell { padding-left: 0; }
+
+  .programs-grid { grid-template-columns: 1fr; }
+  .prog-card { border-right: none; border-bottom: 2px solid var(--black); padding: 2.5rem 1.5rem; }
+  .prog-card:last-child { border-bottom: none; }
+
+  .method-body { grid-template-columns: 1fr; gap: 3rem; }
+
+  .contact-split { grid-template-columns: 1fr; }
+  .contact-left  { padding: 4rem 1.5rem; border-right: none; border-bottom: 2px solid var(--black); }
+  .contact-right { padding: 4rem 1.5rem; }
+
+  .footer-inner { flex-direction: column; gap: 0.8rem; text-align: center; }
+}
+
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav>
-  <a href="#" class="logo">
-    English <span style="color:#aaa; margin:0 0.2rem;">×</span> Emergencies
-    <span class="logo-badge">EE</span>
-  </a>
-  <ul>
-    <li><a href="#programs">Programs</a></li>
-    <li><a href="#methodology">Method</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="tel:3226391906" class="nav-cta">Start Now</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      English &nbsp;<span style="color:#aaa; font-family:Inter,sans-serif; font-size:1rem; background:none; letter-spacing:0; padding:0; margin:0;">×</span>&nbsp; Emergencies
+      <span class="badge">EE</span>
+    </a>
+    <ul>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:3226391906" class="nav-cta">Start Now</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="hero-tag fade-up">Communicative English Learning</p>
-    <h1 class="hero-headline fade-up">
+  <div class="hero-body">
+    <p class="hero-eyebrow">Communicative English Learning</p>
+
+    <h1 class="hero-h1">
       SPEAK.<br><em>Connect.</em><br>GROW.
     </h1>
-    <p class="hero-sub fade-up">
-      Professional English training for <strong>children, teens & adults.</strong>
-      Programs measured in hours — progress driven by <strong>you.</strong>
+
+    <p class="hero-p">
+      Professional English training for <strong>children, teens &amp; adults.</strong>
+      Programs priced by the hour — your advancement depends entirely on <strong>you.</strong>
     </p>
-    <div class="slogan fade-up">NO EXCUSES</div>
-    <div class="hero-btns fade-up">
-      <a href="#programs" class="btn-primary">View Programs</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
+
+    <div class="slogan-box">NO EXCUSES</div>
+
+    <div class="hero-btns">
+      <a href="#programs" class="btn btn-filled">View Programs</a>
+      <a href="#contact"  class="btn btn-ghost">Get in Touch</a>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-right-top">
-      <img
-        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80&fit=crop"
-        alt="Professional people having a conversation"
-      />
-    </div>
-    <div class="hero-right-bottom">
-      <img
-        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&fit=crop"
-        alt="Business team meeting"
-      />
-      <span class="overlay-text">Real People. Real Results.</span>
-    </div>
+
+  <div class="hero-photos">
+    <img
+      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop"
+      alt="Professional people in conversation"
+    />
+    <img
+      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&fit=crop"
+      alt="Business team discussion"
+    />
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-inner">
+<!-- ══ MARQUEE ══ -->
+<div class="marquee">
+  <div class="marquee-track">
     <span class="marquee-item">ENGLISH EMERGENCIES</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">NO EXCUSES</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">COMMUNICATIVE METHOD</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">CHILDREN · TEENS · ADULTS</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">FLEXIBLE HOURS</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">YOUR PACE · YOUR PROGRESS</span><span class="marquee-dot"> ✦ </span>
+    <!-- duplicate for seamless loop -->
     <span class="marquee-item">ENGLISH EMERGENCIES</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">NO EXCUSES</span><span class="marquee-dot"> ✦ </span>
     <span class="marquee-item">COMMUNICATIVE METHOD</span><span class="marquee-dot"> ✦ </span>
@@ -674,173 +673,190 @@
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat">
-    <div class="stat-num">3</div>
-    <div class="stat-label">Programs — Children · Teens · Adults</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">100%</div>
-    <div class="stat-label">Communicative Methodology</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">0</div>
-    <div class="stat-label">Excuses Accepted</div>
+<!-- ══ STATS ══ -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-cell reveal">
+      <div class="stat-num">3</div>
+      <div class="stat-lbl">Programs Available</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Communicative Method</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">0</div>
+      <div class="stat-lbl">Excuses Accepted</div>
+    </div>
   </div>
 </div>
 
-<!-- PROGRAMS -->
+<!-- ══ PROGRAMS ══ -->
 <section class="section" id="programs">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Our Programs</h2>
-  </div>
-  <div class="programs-grid">
-    <div class="program-card">
-      <span class="program-icon">🧒</span>
-      <h3 class="program-name">Children</h3>
-      <p class="program-desc">
-        Fun, dynamic sessions designed to spark curiosity and confidence in young learners. We make English feel natural right from the start.
-      </p>
-      <span class="program-tag">Ages 4 – 11</span>
+  <div class="sec-wrap">
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Our Programs</h2>
     </div>
-    <div class="program-card">
-      <span class="program-icon">🎒</span>
-      <h3 class="program-name">Teens</h3>
-      <p class="program-desc">
-        Real-world English for real situations. Academic prep, conversational fluency, and the confidence to communicate on any stage.
-      </p>
-      <span class="program-tag">Ages 12 – 17</span>
-    </div>
-    <div class="program-card">
-      <span class="program-icon">💼</span>
-      <h3 class="program-name">Adults</h3>
-      <p class="program-desc">
-        Professional English for career growth, travel, and personal ambition. Tailored to your schedule — driven by your goals.
-      </p>
-      <span class="program-tag">18 & Up</span>
-    </div>
-  </div>
-  <p style="margin-top:1.8rem; font-size:0.85rem; color:#888; font-style:italic; font-family:'Playfair Display',serif;">
-    ✦ All programs are priced by the hour. Your advancement is personal — you progress when you're ready.
-  </p>
-</section>
 
-<!-- METHODOLOGY -->
-<section class="section methodology" id="methodology">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Methodology</h2>
-  </div>
-  <div class="method-grid">
-    <div class="method-left">
-      "Language is learned through use — not memorization."
-      <strong>The Communicative Approach</strong>
-    </div>
-    <div class="method-right">
-      <p>We believe real fluency comes from real conversations. Our communicative methodology puts you in authentic situations from day one — listening, speaking, and expressing yourself with genuine confidence.</p>
-      <p>No rote drilling. No passive translation. Just meaningful interaction that builds lasting language ability. Every session is a conversation, every lesson a real-life exchange.</p>
-      <p>Your pace. Your voice. Your progress. We adapt to you — never the other way around.</p>
-      <div class="method-pills">
-        <span class="pill">Speaking First</span>
-        <span class="pill">Real Contexts</span>
-        <span class="pill">Active Listening</span>
-        <span class="pill">Fluency Focused</span>
-        <span class="pill">Flexible Pace</span>
-        <span class="pill">No Excuses</span>
+    <div class="programs-grid">
+      <div class="prog-card reveal">
+        <span class="prog-icon">🧒</span>
+        <h3 class="prog-name">Children</h3>
+        <p class="prog-desc">
+          Fun, dynamic sessions that spark curiosity and build genuine confidence in young learners. We make English feel natural from day one.
+        </p>
+        <span class="prog-tag">Ages 4 – 11</span>
+      </div>
+
+      <div class="prog-card reveal">
+        <span class="prog-icon">🎒</span>
+        <h3 class="prog-name">Teens</h3>
+        <p class="prog-desc">
+          Real-world English for real situations — academic prep, conversational fluency, and the confidence to communicate on any stage.
+        </p>
+        <span class="prog-tag">Ages 12 – 17</span>
+      </div>
+
+      <div class="prog-card reveal">
+        <span class="prog-icon">💼</span>
+        <h3 class="prog-name">Adults</h3>
+        <p class="prog-desc">
+          Professional English for career growth, travel, and personal ambition. Fully tailored to your schedule and your goals.
+        </p>
+        <span class="prog-tag">18 &amp; Up</span>
       </div>
     </div>
+
+    <p class="prog-note">
+      ✦ All programs are priced by the hour. Your advancement is personal — you move forward when you're ready.
+    </p>
   </div>
 </section>
 
-<!-- CONTACT -->
-<div class="contact-wrap" id="contact">
-  <div class="contact-left">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Let's Talk</h2>
+<!-- ══ METHODOLOGY ══ -->
+<section class="section method-section" id="method">
+  <div class="sec-wrap">
+    <div class="sec-header">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Methodology</h2>
     </div>
-    <p style="color:#666; font-size:0.9rem; font-weight:300; line-height:1.7; margin-top:-1rem; margin-bottom:0;">
-      Ready to start? Send us a message and we'll get back to you right away.
-    </p>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="Ana" required />
+
+    <div class="method-body">
+      <div class="method-quote reveal">
+        "Language is learned through use — not memorization."
+        <strong>The Communicative Approach</strong>
+      </div>
+
+      <div class="method-text reveal">
+        <p>We believe real fluency comes from real conversations. Our methodology places you in authentic situations from day one — listening, speaking, and expressing yourself with genuine confidence.</p>
+        <p>No rote drilling. No passive translation. Just meaningful interaction that builds lasting language ability. Every session is a conversation, every lesson a real-life exchange.</p>
+        <p>Your pace. Your voice. Your progress. We adapt to you — never the other way around.</p>
+        <div class="pills">
+          <span class="pill">Speaking First</span>
+          <span class="pill">Real Contexts</span>
+          <span class="pill">Active Listening</span>
+          <span class="pill">Fluency Focused</span>
+          <span class="pill">Flexible Pace</span>
+          <span class="pill">No Excuses</span>
         </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="García" />
-        </div>
       </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="your@email.com" required />
-      </div>
-      <div class="form-group">
-        <label>I'm interested in</label>
-        <select>
-          <option value="">— Select a program —</option>
-          <option>Children (Ages 4–11)</option>
-          <option>Teens (Ages 12–17)</option>
-          <option>Adults (18+)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Tell us about your goals..."></textarea>
-      </div>
-      <button type="submit" class="btn-primary" style="width:100%; cursor:pointer;">Send Message →</button>
-    </form>
+    </div>
   </div>
+</section>
 
-  <div class="contact-right">
-    <div class="section-header">
-      <span class="section-num" style="color:#444;">—</span>
-      <h2 class="section-title" style="color:var(--white);">Contact</h2>
-    </div>
-    <p style="color:#777; font-size:0.9rem; font-weight:300; line-height:1.7; margin-top:-1rem;">
-      We're always available to answer your questions and help you get started.
-    </p>
+<!-- ══ CONTACT ══ -->
+<div class="contact-section" id="contact">
+  <div class="contact-split">
 
-    <div class="contact-detail">
-      <div>
-        <div class="contact-label">Phone / WhatsApp</div>
-        <a href="tel:3226391906" class="contact-value">322 639 1906</a>
+    <div class="contact-left">
+      <div class="sec-header">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">Let's Talk</h2>
       </div>
-      <div>
-        <div class="contact-label">Email</div>
-        <a href="/cdn-cgi/l/email-protection#3b5e555c575248535e565e495c5e5558525e487b5c565a525715585456" class="contact-value"><span class="__cf_email__" data-cfemail="22474c454e4b514a474f475045474c414b475162454f434b4e0c414d4f">[email&#160;protected]</span></a>
-      </div>
-      <div>
-        <div class="contact-label">Schedule</div>
-        <span class="contact-value" style="cursor:default; opacity:0.7;">Flexible Hours — By Appointment</span>
-      </div>
-    </div>
-
-    <div style="margin-top:4rem; border-top:1px solid #1e1e1e; padding-top:2.5rem;">
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:4.5rem; letter-spacing:0.05em; color:#181818; line-height:0.95;">
-        NO<br>EXCUSES.
-      </div>
-      <p style="font-family:'Playfair Display',serif; font-style:italic; color:#555; margin-top:0.8rem; font-size:0.95rem;">
-        Your English journey starts today.
+      <p class="contact-intro">
+        Ready to start? Have questions? Send us a message and we'll get back to you right away.
       </p>
+
+      <form class="form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" placeholder="Ana" required />
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" placeholder="García" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" required />
+        </div>
+        <div class="field">
+          <label>I'm Interested In</label>
+          <select>
+            <option value="">— Select a program —</option>
+            <option>Children (Ages 4–11)</option>
+            <option>Teens (Ages 12–17)</option>
+            <option>Adults (18+)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your goals..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-filled" style="width:100%; cursor:pointer; font-size:1.05rem;">
+          Send Message →
+        </button>
+      </form>
     </div>
+
+    <div class="contact-right">
+      <div class="sec-header">
+        <span class="sec-num" style="color:#333;">—</span>
+        <h2 class="sec-title" style="color:var(--white);">Contact</h2>
+      </div>
+      <p class="c-intro">
+        We're always available to answer your questions and help you get started on your English journey.
+      </p>
+
+      <div class="c-items">
+        <div>
+          <div class="c-label">Phone / WhatsApp</div>
+          <a href="tel:3226391906" class="c-value">322 639 1906</a>
+        </div>
+        <div>
+          <div class="c-label">Email</div>
+          <a href="mailto:englishemergencies@gmail.com" class="c-value">englishemergencies@gmail.com</a>
+        </div>
+        <div>
+          <div class="c-label">Schedule</div>
+          <span class="c-value" style="opacity:.6; cursor:default;">Flexible Hours — By Appointment</span>
+        </div>
+      </div>
+
+      <div class="big-slogan">
+        <div class="big-slogan-text">NO<br>EXCUSES.</div>
+        <p class="big-slogan-sub">Your English journey starts today.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-logo">English Emergencies</div>
-  <div class="footer-copy">© 2025 English Emergencies · All rights reserved · No Excuses</div>
+  <div class="footer-inner">
+    <div class="footer-logo">English Emergencies</div>
+    <div class="footer-copy">© 2025 English Emergencies &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; No Excuses</div>
+  </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
+    const btn = e.target.querySelector('[type="submit"]');
     btn.textContent = '✓ Message Sent!';
     btn.style.background = '#222';
     setTimeout(() => {
@@ -850,14 +866,20 @@
     }, 3000);
   }
 
-  // Scroll-triggered fade-in for cards and sections
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'none';
-        io.unobserve(entry.target);
+  /* scroll reveal */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.style.transition = 'opacity .65s ease, transform .65s ease';
+        en.target.style.opacity = '1';
+        en.target.style.transform = 'none';
+        obs.unobserve(en.target);
       }
     });
-  }, { thres
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
