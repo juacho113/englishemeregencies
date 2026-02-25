@@ -5,795 +5,798 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Emergencies — No Excuses</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 
-/* ── RESET ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
-:root {
-  --black: #0d0d0d;
-  --white: #f4f4ef;
-  --gray:  #777;
-  --max:   1280px;
-  --side:  clamp(1.5rem, 5vw, 6rem);
+:root{
+  --ink: #0c0c0c;
+  --paper: #f0ede8;
+  --mid: #6b6b6b;
+  --rule: 1.5px solid #0c0c0c;
 }
 
-body {
-  background: var(--white);
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;          /* hard minimum base */
-  line-height: 1.7;
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  line-height: 1.6;
   overflow-x: hidden;
+  cursor: default;
 }
 
-/* ── CONTAINER ── */
-.wrap {
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--side);
+/* ─── CUSTOM CURSOR ─── */
+body { cursor: none; }
+#cur {
+  position: fixed; z-index: 9999;
+  width: 18px; height: 18px;
+  background: var(--ink);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: transform .12s ease, width .2s ease, height .2s ease, background .2s;
+  mix-blend-mode: difference;
 }
+body:hover #cur { width: 18px; height: 18px; }
 
-/* ══════════════════
-   NAV
-══════════════════ */
+/* ─── NAV ─── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  background: var(--white);
-  border-bottom: 2px solid var(--black);
+  position: fixed; top:0; left:0; right:0; z-index:500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 4rem;
+  background: var(--ink);
+  color: var(--paper);
 }
-.nav-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 1.2rem var(--side);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.9rem;
-  letter-spacing: 0.12em;
-  color: var(--black);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.nav-logo .badge {
-  background: var(--black);
-  color: var(--white);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  padding: 0.2rem 0.55rem;
-  border-radius: 3px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
-}
-nav ul a {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--black);
-  transition: opacity .2s;
-}
-nav ul a:hover { opacity: .4; }
-.nav-cta {
-  background: var(--black) !important;
-  color: var(--white) !important;
-  padding: 0.6rem 1.6rem !important;
-  border-radius: 3px;
-}
-.nav-cta:hover { opacity: .75 !important; }
-
-/* ══════════════════
-   HERO
-══════════════════ */
-.hero {
-  min-height: 100vh;
-  padding-top: 76px;
-  display: grid;
-  grid-template-columns: 1fr 260px;
-  border-bottom: 2px solid var(--black);
-}
-.hero-body {
-  padding: 5rem var(--side);
-  max-width: calc(var(--max) - 260px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2.2rem;
-  border-right: 2px solid var(--black);
-}
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  font-size: 1rem;
-  font-weight: 600;
+.logo-text {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gray);
+  text-decoration: none;
+  color: var(--paper);
 }
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 40px; height: 2px;
-  background: var(--gray);
-  flex-shrink: 0;
-}
-.hero-h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5.5rem, 10vw, 9rem);
-  line-height: 0.92;
-  letter-spacing: 0.02em;
-}
-.hero-h1 em {
-  font-family: 'Playfair Display', serif;
+.logo-text em {
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 0.82em;
-  color: #333;
+  font-weight: 400;
+  font-size: 1em;
+  opacity: .55;
+  margin: 0 .3rem;
 }
-.hero-p {
-  font-size: 1.25rem;
-  font-weight: 300;
-  color: #444;
-  line-height: 1.75;
-  max-width: 580px;
+nav ul {
+  display: flex; gap: 2.5rem; list-style: none; align-items: center;
 }
-.hero-p strong { color: var(--black); font-weight: 700; }
-
-.slogan-box {
-  display: inline-block;
-  align-self: flex-start;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  letter-spacing: 0.22em;
-  border: 3px solid var(--black);
-  padding: 0.5rem 1.6rem;
-  transform: rotate(-1.2deg);
-  position: relative;
-  overflow: hidden;
-  cursor: default;
-}
-.slogan-box::after {
-  content: 'NO EXCUSES';
-  position: absolute; inset: 0;
-  background: var(--black); color: var(--white);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity .25s;
-}
-.slogan-box:hover::after { opacity: 1; }
-
-.hero-btns { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-
-.btn {
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+nav ul a {
+  font-family: 'DM Mono', monospace;
+  font-size: .82rem;
+  letter-spacing: .1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1rem 2.6rem;
-  border: 2.5px solid var(--black);
-  display: inline-block;
-  cursor: pointer;
-  transition: background .2s, color .2s;
+  color: var(--paper);
+  opacity: .6;
+  transition: opacity .2s;
 }
-.btn-filled { background: var(--black); color: var(--white); }
-.btn-filled:hover { background: #2a2a2a; }
-.btn-ghost  { background: transparent; color: var(--black); }
-.btn-ghost:hover { background: var(--black); color: var(--white); }
+nav ul a:hover { opacity: 1; }
+.nav-pill {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  opacity: 1 !important;
+  padding: .45rem 1.3rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+}
 
-/* photo strip */
-.hero-photos {
-  background: #111;
-  overflow: hidden;
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: var(--ink);
   display: flex;
   flex-direction: column;
-}
-.hero-photos img {
-  flex: 1;
-  width: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.15);
-  opacity: .8;
-  transition: opacity .4s, transform .5s;
-}
-.hero-photos img:hover { opacity: 1; transform: scale(1.04); }
-.hero-photos img:first-child { border-bottom: 1px solid #2a2a2a; }
-
-/* ══════════════════
-   MARQUEE
-══════════════════ */
-.marquee {
-  background: var(--black);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
-  padding: 1.1rem 0;
-  border-bottom: 2px solid #1a1a1a;
+  padding-top: 68px;
 }
-.marquee-track {
-  display: flex;
-  gap: 3rem;
-  white-space: nowrap;
-  animation: scroll 24s linear infinite;
-}
-.marquee-item {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
-  color: #555;
-  flex-shrink: 0;
-}
-.marquee-dot { color: #2e2e2e; }
-@keyframes scroll { to { transform: translateX(-50%); } }
 
-/* ══════════════════
-   STATS
-══════════════════ */
-.stats {
-  background: var(--black);
-  color: var(--white);
-  border-bottom: 2px solid var(--black);
+/* background photo */
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1400&q=80&fit=crop');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(.25);
+  transform: scale(1.04);
+  transition: transform 12s ease;
 }
-.stats-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--side);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.stat-cell {
-  padding: 4rem 0;
-  padding-right: 3rem;
-  border-right: 1px solid #222;
-}
-.stat-cell:last-child { border-right: none; }
-.stat-cell + .stat-cell { padding-left: 3rem; }
+.hero:hover .hero-bg { transform: scale(1); }
 
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-.stat-lbl {
-  font-size: 1.05rem;
-  letter-spacing: 0.1em;
+/* floating label */
+.hero-label {
+  position: relative;
+  font-family: 'DM Mono', monospace;
+  font-size: .95rem;
+  letter-spacing: .25em;
   text-transform: uppercase;
-  color: #777;
-  font-weight: 400;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.hero-label::before,
+.hero-label::after {
+  content: '';
+  display: block;
+  width: 50px; height: 1px;
+  background: rgba(255,255,255,.25);
 }
 
-/* ══════════════════
-   SECTION BASE
-══════════════════ */
-.section {
-  border-bottom: 2px solid var(--black);
-  padding: 6rem 0;
+/* giant headline */
+.hero-title {
+  position: relative;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(6rem, 14vw, 13rem);
+  font-weight: 700;
+  line-height: .88;
+  letter-spacing: -.01em;
+  color: #fff;
+  text-transform: uppercase;
 }
-.sec-wrap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0 var(--side);
+.hero-title em {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: .65em;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .05em;
 }
-.sec-header {
+
+/* slogan badge */
+.hero-badge {
+  position: relative;
+  margin-top: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  border: 1px solid rgba(255,255,255,.2);
+  padding: .7rem 2rem;
+}
+.hero-badge span {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+.hero-badge::before,
+.hero-badge::after {
+  content: '✦';
+  color: rgba(255,255,255,.25);
+  font-size: .65rem;
+}
+
+/* scroll cue */
+.scroll-cue {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(255,255,255,.3);
+  font-family: 'DM Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100%{opacity:.3; transform:scaleY(1);}
+  50%{opacity:.8; transform:scaleY(.6);}
+}
+
+/* ─── INTRO BAND ─── */
+.intro-band {
+  background: var(--paper);
+  border-bottom: var(--rule);
+  padding: 4rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: center;
+}
+.intro-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #e0ddd8;
+  text-align: center;
+}
+.intro-text {
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #333;
+  max-width: 680px;
+}
+.intro-text strong { color: var(--ink); font-weight: 700; }
+
+/* ─── PROGRAMS ─── */
+.programs-block {
+  border-bottom: var(--rule);
+}
+.programs-header {
   display: flex;
   align-items: baseline;
-  gap: 1.2rem;
-  margin-bottom: 4rem;
+  justify-content: space-between;
+  padding: 3rem 4rem 2.5rem;
+  border-bottom: var(--rule);
 }
-.sec-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
-  color: #bbb;
+.programs-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
-.sec-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  letter-spacing: 0.04em;
-  line-height: 1;
+.programs-header .tag-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--mid);
 }
 
-/* ══════════════════
-   PROGRAMS
-══════════════════ */
-.programs-grid {
+/* each row */
+.prog-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 2px solid var(--black);
+  grid-template-columns: 80px 1fr 280px 180px;
+  align-items: center;
+  gap: 3rem;
+  padding: 2.8rem 4rem;
+  border-bottom: var(--rule);
+  transition: background .25s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
 }
-.prog-card {
-  padding: 3.5rem 3rem;
-  border-right: 2px solid var(--black);
+.prog-row::after {
+  content: '';
+  position: absolute; left: 0; top:0; bottom:0;
+  width: 0;
+  background: var(--ink);
+  transition: width .4s ease;
+  z-index: 0;
+}
+.prog-row:hover::after { width: 100%; }
+.prog-row > * { position: relative; z-index: 1; transition: color .35s; }
+
+.prog-row:last-child { border-bottom: none; }
+
+.prog-row-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  letter-spacing: .1em;
+  color: #ccc;
+}
+.prog-row:hover .prog-row-num { color: rgba(255,255,255,.35); }
+
+.prog-row-main h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+  transition: color .35s;
+}
+.prog-row:hover .prog-row-main h3 { color: #fff; }
+
+.prog-row-main p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.6;
+  transition: color .35s;
+}
+.prog-row:hover .prog-row-main p { color: rgba(255,255,255,.65); }
+
+.prog-row-img {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  filter: grayscale(100%);
+}
+.prog-row-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.prog-row:hover .prog-row-img img { transform: scale(1.08); }
+
+.prog-row-age {
+  text-align: right;
+}
+.prog-row-age .age-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-style: italic;
+  color: #ccc;
+  display: block;
+  line-height: 1;
+  transition: color .35s;
+}
+.prog-row:hover .prog-row-age .age-num { color: rgba(255,255,255,.3); }
+.prog-row-age .age-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #bbb;
+  transition: color .35s;
+}
+.prog-row:hover .prog-row-age .age-label { color: rgba(255,255,255,.4); }
+
+/* ─── MANIFESTO ─── */
+.manifesto {
+  background: var(--ink);
+  color: #fff;
+  padding: 8rem 4rem;
+  text-align: center;
+  border-bottom: var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.manifesto::before {
+  content: 'NO EXCUSES';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(8rem, 18vw, 18rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: rgba(255,255,255,.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.manifesto-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  color: rgba(255,255,255,.85);
+  position: relative;
+}
+.manifesto-attr {
+  font-family: 'DM Mono', monospace;
+  font-size: .9rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  position: relative;
+}
+.manifesto-pills {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+  position: relative;
+}
+.m-pill {
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.5);
+  font-family: 'DM Mono', monospace;
+  font-size: .85rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .5rem 1.3rem;
+  border-radius: 100px;
+  transition: border-color .2s, color .2s;
+  cursor: default;
+}
+.m-pill:hover { border-color: rgba(255,255,255,.6); color: rgba(255,255,255,.9); }
+
+/* ─── STATS ROW ─── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: var(--rule);
+}
+.s-cell {
+  padding: 4rem;
+  border-right: var(--rule);
   position: relative;
   overflow: hidden;
   cursor: default;
 }
-.prog-card:last-child { border-right: none; }
-.prog-card::before {
+.s-cell:last-child { border-right: none; }
+.s-cell::before {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 0;
-  background: var(--black);
-  transition: height .4s ease;
-  z-index: 0;
+  position: absolute; top:0; left:0; right:0;
+  height: 3px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
 }
-.prog-card:hover::before { height: 100%; }
-.prog-card > * { position: relative; z-index: 1; }
-
-.prog-icon { font-size: 3rem; display: block; margin-bottom: 1.5rem; }
-
-.prog-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.6rem;
-  letter-spacing: 0.06em;
-  margin-bottom: 1rem;
-  transition: color .3s;
-}
-.prog-desc {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: #555;
-  line-height: 1.75;
-  margin-bottom: 2rem;
-  transition: color .3s;
-}
-.prog-tag {
-  display: inline-block;
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.s-cell:hover::before { transform: scaleX(1); }
+.s-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 5rem;
   font-weight: 700;
-  border: 2px solid var(--black);
-  padding: 0.35rem 1rem;
-  transition: border-color .3s, color .3s;
+  line-height: 1;
+  margin-bottom: .5rem;
 }
-.prog-card:hover .prog-name,
-.prog-card:hover .prog-icon { color: var(--white); }
-.prog-card:hover .prog-desc  { color: #ccc; }
-.prog-card:hover .prog-tag   { border-color: rgba(255,255,255,.3); color: var(--white); }
-
-.prog-note {
-  margin-top: 2.2rem;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  color: #999;
-}
-
-/* ══════════════════
-   METHODOLOGY
-══════════════════ */
-.method-section { background: var(--black); color: var(--white); }
-.method-section .sec-num  { color: #444; }
-.method-section .sec-title { color: var(--white); }
-
-.method-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-.method-quote {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
-  color: #bbb;
-  line-height: 1.55;
-  border-left: 3px solid #333;
-  padding-left: 2rem;
-}
-.method-quote strong {
-  display: block;
-  margin-top: 1.2rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-style: normal;
-  font-size: 1.4em;
-  letter-spacing: 0.07em;
-  color: var(--white);
-}
-.method-text p {
-  font-size: 1.15rem;
-  font-weight: 300;
-  color: #aaa;
-  line-height: 1.8;
-  margin-bottom: 1.3rem;
-}
-.pills { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
-.pill {
-  border: 1.5px solid #333;
-  color: #999;
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
+.s-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: .9rem;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  font-weight: 600;
-  padding: 0.45rem 1.2rem;
-  border-radius: 100px;
-  cursor: default;
-  transition: border-color .2s, color .2s;
+  color: var(--mid);
 }
-.pill:hover { border-color: var(--white); color: var(--white); }
 
-/* ══════════════════
-   CONTACT
-══════════════════ */
+/* ─── CONTACT ─── */
 .contact-section {
-  border-bottom: 2px solid var(--black);
+  background: var(--paper);
+  border-bottom: var(--rule);
 }
-.contact-split {
+.contact-top {
+  padding: 4rem 4rem 3rem;
+  border-bottom: var(--rule);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.contact-top h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  line-height: .95;
+}
+.contact-top .contact-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--mid);
+  max-width: 360px;
+  padding-bottom: .5rem;
+  line-height: 1.6;
+}
+
+.contact-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.contact-left {
-  padding: 6rem var(--side);
-  border-right: 2px solid var(--black);
-  max-width: calc(var(--max) / 2 + var(--side));
-  margin-left: auto;
+.contact-form-side {
+  padding: 4rem;
+  border-right: var(--rule);
 }
-.contact-right {
-  padding: 6rem var(--side);
-  background: var(--black);
-  color: var(--white);
-}
-
-.contact-intro {
-  font-size: 1.15rem;
-  font-weight: 300;
-  color: #666;
-  line-height: 1.75;
-  margin-bottom: 2.5rem;
+.contact-info-side {
+  padding: 4rem;
+  background: var(--ink);
+  color: #fff;
 }
 
 /* form */
 .form { display: flex; flex-direction: column; gap: 1.4rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-.field { display: flex; flex-direction: column; gap: 0.5rem; }
-.field label {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.fld { display: flex; flex-direction: column; gap: .4rem; }
+.fld label {
+  font-family: 'DM Mono', monospace;
+  font-size: .82rem;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--gray);
+  color: var(--mid);
 }
-.field input,
-.field textarea,
-.field select {
-  padding: 1rem 1.2rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  border: 2px solid #ccc;
+.fld input,.fld textarea,.fld select {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  padding: .85rem 1rem;
+  border: 1.5px solid #ccc;
   background: transparent;
-  color: var(--black);
+  color: var(--ink);
   outline: none;
   border-radius: 0;
   appearance: none;
   transition: border-color .2s, box-shadow .2s;
 }
-.field input:focus,
-.field textarea:focus,
-.field select:focus {
-  border-color: var(--black);
-  box-shadow: 4px 4px 0 var(--black);
+.fld input:focus,.fld textarea:focus,.fld select:focus {
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
 }
-.field textarea { height: 130px; resize: vertical; }
-
-/* contact info */
-.c-intro {
-  font-size: 1.05rem;
-  font-weight: 300;
-  color: #555;
-  line-height: 1.75;
-  margin-bottom: 3rem;
-}
-.c-items { display: flex; flex-direction: column; gap: 2.5rem; }
-.c-label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.fld textarea { height: 120px; resize: vertical; }
+.submit-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .15em;
   text-transform: uppercase;
-  color: #444;
-  margin-bottom: 0.3rem;
+  padding: 1.1rem 2rem;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  cursor: none;
+  width: 100%;
+  transition: background .2s;
+  text-align: center;
 }
-.c-value {
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--white);
-  text-decoration: none;
-  display: block;
-  transition: opacity .2s;
-}
-.c-value:hover { opacity: .6; }
+.submit-btn:hover { background: #222; }
 
-.big-slogan {
-  margin-top: 4rem;
+/* info side */
+.c-block { margin-bottom: 2.8rem; }
+.c-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .78rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: .3rem;
+}
+.c-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity .2s;
+  display: block;
+}
+.c-val:hover { opacity: .6; }
+
+.big-slogan-area {
+  margin-top: 2rem;
   padding-top: 3rem;
   border-top: 1px solid #1a1a1a;
 }
-.big-slogan-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 7vw, 6.5rem);
-  letter-spacing: 0.04em;
-  color: #181818;
-  line-height: 0.95;
+.big-slogan-word {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #191919;
+  line-height: .95;
+  text-transform: uppercase;
 }
 .big-slogan-sub {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 1.2rem;
-  color: #444;
+  color: rgba(255,255,255,.3);
   margin-top: 1rem;
 }
 
-/* ══════════════════
-   FOOTER
-══════════════════ */
+/* ─── FOOTER ─── */
 footer {
-  background: var(--black);
-  color: var(--white);
-  border-top: 2px solid #111;
-}
-.footer-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 2.8rem var(--side);
+  background: var(--ink);
+  color: #fff;
+  padding: 2.5rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid #1a1a1a;
 }
-.footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  letter-spacing: 0.14em;
+.f-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
 }
-.footer-copy {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* ══════════════════
-   SCROLL REVEAL
-══════════════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
+.f-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.3);
 }
 
-/* ══════════════════
-   RESPONSIVE
-══════════════════ */
-@media (max-width: 960px) {
-  body { font-size: 18px; }
+/* ─── REVEAL ─── */
+.reveal { opacity:0; transform: translateY(32px); }
 
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  nav { padding: 1rem 1.5rem; }
   nav ul { display: none; }
 
-  .hero { grid-template-columns: 1fr; }
-  .hero-body { padding: 3.5rem 1.5rem; border-right: none; }
-  .hero-photos { height: 55vw; flex-direction: row; }
-  .hero-photos img:first-child { border-bottom: none; border-right: 1px solid #2a2a2a; }
+  .intro-band { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.5rem; }
+  .intro-num { font-size: 5rem; text-align: left; }
+  .intro-text { font-size: 1.4rem; }
 
-  .stats-inner { grid-template-columns: 1fr; }
-  .stat-cell { border-right: none; border-bottom: 1px solid #222; padding: 2.5rem 0; }
-  .stat-cell + .stat-cell { padding-left: 0; }
+  .programs-header { padding: 2rem 1.5rem; flex-direction: column; gap: .5rem; }
+  .prog-row { grid-template-columns: 1fr; gap: 1.2rem; padding: 2rem 1.5rem; }
+  .prog-row-img { height: 200px; }
+  .prog-row-age { text-align: left; }
 
-  .programs-grid { grid-template-columns: 1fr; }
-  .prog-card { border-right: none; border-bottom: 2px solid var(--black); padding: 2.5rem 1.5rem; }
-  .prog-card:last-child { border-bottom: none; }
+  .manifesto { padding: 5rem 1.5rem; }
 
-  .method-body { grid-template-columns: 1fr; gap: 3rem; }
+  .stats-row { grid-template-columns: 1fr; }
+  .s-cell { border-right: none; border-bottom: var(--rule); padding: 2.5rem 1.5rem; }
 
-  .contact-split { grid-template-columns: 1fr; }
-  .contact-left  { padding: 4rem 1.5rem; border-right: none; border-bottom: 2px solid var(--black); }
-  .contact-right { padding: 4rem 1.5rem; }
+  .contact-top { flex-direction: column; padding: 3rem 1.5rem; }
+  .contact-body { grid-template-columns: 1fr; }
+  .contact-form-side { padding: 3rem 1.5rem; border-right: none; border-bottom: var(--rule); }
+  .contact-info-side { padding: 3rem 1.5rem; }
 
-  .footer-inner { flex-direction: column; gap: 0.8rem; text-align: center; }
+  footer { flex-direction: column; gap: .8rem; text-align: center; padding: 2rem 1.5rem; }
 }
-
 </style>
 </head>
 <body>
 
+<div id="cur"></div>
+
 <!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      English &nbsp;<span style="color:#aaa; font-family:Inter,sans-serif; font-size:1rem; background:none; letter-spacing:0; padding:0; margin:0;">×</span>&nbsp; Emergencies
-      <span class="badge">EE</span>
-    </a>
-    <ul>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#method">Method</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="tel:3226391906" class="nav-cta">Start Now</a></li>
-    </ul>
-  </div>
+  <a href="#" class="logo-text">
+    English <em>&times;</em> Emergencies
+  </a>
+  <ul>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:3226391906" class="nav-pill">Start Now</a></li>
+  </ul>
 </nav>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-body">
-    <p class="hero-eyebrow">Communicative English Learning</p>
+  <div class="hero-bg"></div>
 
-    <h1 class="hero-h1">
-      SPEAK.<br><em>Connect.</em><br>GROW.
-    </h1>
+  <p class="hero-label">Communicative English Learning</p>
 
-    <p class="hero-p">
-      Professional English training for <strong>children, teens &amp; adults.</strong>
-      Programs priced by the hour — your advancement depends entirely on <strong>you.</strong>
-    </p>
+  <h1 class="hero-title">
+    Speak.<br>
+    <em>Connect.</em><br>
+    Grow.
+  </h1>
 
-    <div class="slogan-box">NO EXCUSES</div>
-
-    <div class="hero-btns">
-      <a href="#programs" class="btn btn-filled">View Programs</a>
-      <a href="#contact"  class="btn btn-ghost">Get in Touch</a>
-    </div>
+  <div class="hero-badge">
+    <span>No Excuses</span>
   </div>
 
-  <div class="hero-photos">
-    <img
-      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop"
-      alt="Professional people in conversation"
-    />
-    <img
-      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&fit=crop"
-      alt="Business team discussion"
-    />
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- ══ MARQUEE ══ -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span class="marquee-item">ENGLISH EMERGENCIES</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">NO EXCUSES</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">COMMUNICATIVE METHOD</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">CHILDREN · TEENS · ADULTS</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">FLEXIBLE HOURS</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">YOUR PACE · YOUR PROGRESS</span><span class="marquee-dot"> ✦ </span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item">ENGLISH EMERGENCIES</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">NO EXCUSES</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">COMMUNICATIVE METHOD</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">CHILDREN · TEENS · ADULTS</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">FLEXIBLE HOURS</span><span class="marquee-dot"> ✦ </span>
-    <span class="marquee-item">YOUR PACE · YOUR PROGRESS</span><span class="marquee-dot"> ✦ </span>
-  </div>
-</div>
-
-<!-- ══ STATS ══ -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat-cell reveal">
-      <div class="stat-num">3</div>
-      <div class="stat-lbl">Programs Available</div>
-    </div>
-    <div class="stat-cell reveal">
-      <div class="stat-num">100%</div>
-      <div class="stat-lbl">Communicative Method</div>
-    </div>
-    <div class="stat-cell reveal">
-      <div class="stat-num">0</div>
-      <div class="stat-lbl">Excuses Accepted</div>
-    </div>
-  </div>
+<!-- ══ INTRO ══ -->
+<div class="intro-band reveal">
+  <div class="intro-num">EE</div>
+  <p class="intro-text">
+    Professional English training for <strong>children, teens &amp; adults.</strong>
+    Programs priced by the hour — your advancement depends entirely on <strong>you.</strong>
+  </p>
 </div>
 
 <!-- ══ PROGRAMS ══ -->
-<section class="section" id="programs">
-  <div class="sec-wrap">
-    <div class="sec-header">
-      <span class="sec-num">01</span>
-      <h2 class="sec-title">Our Programs</h2>
+<section class="programs-block" id="programs">
+  <div class="programs-header">
+    <h2>Our Programs</h2>
+    <span class="tag-line">Priced by the hour · Your pace · Your progress</span>
+  </div>
+
+  <div class="prog-row reveal">
+    <div class="prog-row-num">01</div>
+    <div class="prog-row-main">
+      <h3>Children</h3>
+      <p>Fun, dynamic sessions that spark curiosity and build genuine confidence in young learners. We make English feel natural from day one.</p>
     </div>
-
-    <div class="programs-grid">
-      <div class="prog-card reveal">
-        <span class="prog-icon">🧒</span>
-        <h3 class="prog-name">Children</h3>
-        <p class="prog-desc">
-          Fun, dynamic sessions that spark curiosity and build genuine confidence in young learners. We make English feel natural from day one.
-        </p>
-        <span class="prog-tag">Ages 4 – 11</span>
-      </div>
-
-      <div class="prog-card reveal">
-        <span class="prog-icon">🎒</span>
-        <h3 class="prog-name">Teens</h3>
-        <p class="prog-desc">
-          Real-world English for real situations — academic prep, conversational fluency, and the confidence to communicate on any stage.
-        </p>
-        <span class="prog-tag">Ages 12 – 17</span>
-      </div>
-
-      <div class="prog-card reveal">
-        <span class="prog-icon">💼</span>
-        <h3 class="prog-name">Adults</h3>
-        <p class="prog-desc">
-          Professional English for career growth, travel, and personal ambition. Fully tailored to your schedule and your goals.
-        </p>
-        <span class="prog-tag">18 &amp; Up</span>
-      </div>
+    <div class="prog-row-img">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80&fit=crop" alt="Children learning English" />
     </div>
+    <div class="prog-row-age">
+      <span class="age-num">4–11</span>
+      <span class="age-label">Years old</span>
+    </div>
+  </div>
 
-    <p class="prog-note">
-      ✦ All programs are priced by the hour. Your advancement is personal — you move forward when you're ready.
-    </p>
+  <div class="prog-row reveal">
+    <div class="prog-row-num">02</div>
+    <div class="prog-row-main">
+      <h3>Teens</h3>
+      <p>Real-world English for real situations — academic prep, conversational fluency, and the confidence to communicate on any stage.</p>
+    </div>
+    <div class="prog-row-img">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80&fit=crop" alt="Teens in class" />
+    </div>
+    <div class="prog-row-age">
+      <span class="age-num">12–17</span>
+      <span class="age-label">Years old</span>
+    </div>
+  </div>
+
+  <div class="prog-row reveal">
+    <div class="prog-row-num">03</div>
+    <div class="prog-row-main">
+      <h3>Adults</h3>
+      <p>Professional English for career growth, travel, and personal ambition. Fully tailored to your schedule and your goals.</p>
+    </div>
+    <div class="prog-row-img">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop" alt="Adults in professional conversation" />
+    </div>
+    <div class="prog-row-age">
+      <span class="age-num">18+</span>
+      <span class="age-label">Years old</span>
+    </div>
   </div>
 </section>
 
-<!-- ══ METHODOLOGY ══ -->
-<section class="section method-section" id="method">
-  <div class="sec-wrap">
-    <div class="sec-header">
-      <span class="sec-num">02</span>
-      <h2 class="sec-title">Methodology</h2>
-    </div>
-
-    <div class="method-body">
-      <div class="method-quote reveal">
-        "Language is learned through use — not memorization."
-        <strong>The Communicative Approach</strong>
-      </div>
-
-      <div class="method-text reveal">
-        <p>We believe real fluency comes from real conversations. Our methodology places you in authentic situations from day one — listening, speaking, and expressing yourself with genuine confidence.</p>
-        <p>No rote drilling. No passive translation. Just meaningful interaction that builds lasting language ability. Every session is a conversation, every lesson a real-life exchange.</p>
-        <p>Your pace. Your voice. Your progress. We adapt to you — never the other way around.</p>
-        <div class="pills">
-          <span class="pill">Speaking First</span>
-          <span class="pill">Real Contexts</span>
-          <span class="pill">Active Listening</span>
-          <span class="pill">Fluency Focused</span>
-          <span class="pill">Flexible Pace</span>
-          <span class="pill">No Excuses</span>
-        </div>
-      </div>
-    </div>
+<!-- ══ MANIFESTO ══ -->
+<section class="manifesto" id="method">
+  <p class="manifesto-quote reveal">
+    "Language is learned through use —<br>not memorization."
+  </p>
+  <p class="manifesto-attr reveal">The Communicative Approach</p>
+  <div class="manifesto-pills reveal">
+    <span class="m-pill">Speaking First</span>
+    <span class="m-pill">Real Contexts</span>
+    <span class="m-pill">Active Listening</span>
+    <span class="m-pill">Fluency Focused</span>
+    <span class="m-pill">Flexible Pace</span>
+    <span class="m-pill">No Excuses</span>
   </div>
 </section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-row">
+  <div class="s-cell reveal">
+    <div class="s-num">3</div>
+    <div class="s-lbl">Programs Available</div>
+  </div>
+  <div class="s-cell reveal">
+    <div class="s-num">100%</div>
+    <div class="s-lbl">Communicative Method</div>
+  </div>
+  <div class="s-cell reveal">
+    <div class="s-num">0</div>
+    <div class="s-lbl">Excuses Accepted</div>
+  </div>
+</div>
 
 <!-- ══ CONTACT ══ -->
-<div class="contact-section" id="contact">
-  <div class="contact-split">
+<section class="contact-section" id="contact">
+  <div class="contact-top">
+    <h2>Let's<br>Talk</h2>
+    <p class="contact-subtitle">Ready to start? Send us a message and we'll get back to you right away.</p>
+  </div>
 
-    <div class="contact-left">
-      <div class="sec-header">
-        <span class="sec-num">03</span>
-        <h2 class="sec-title">Let's Talk</h2>
-      </div>
-      <p class="contact-intro">
-        Ready to start? Have questions? Send us a message and we'll get back to you right away.
-      </p>
-
+  <div class="contact-body">
+    <div class="contact-form-side">
       <form class="form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="field">
+        <div class="form-2col">
+          <div class="fld">
             <label>First Name</label>
             <input type="text" placeholder="Ana" required />
           </div>
-          <div class="field">
+          <div class="fld">
             <label>Last Name</label>
             <input type="text" placeholder="García" />
           </div>
         </div>
-        <div class="field">
+        <div class="fld">
           <label>Email</label>
           <input type="email" placeholder="your@email.com" required />
         </div>
-        <div class="field">
+        <div class="fld">
           <label>I'm Interested In</label>
           <select>
             <option value="">— Select a program —</option>
@@ -802,84 +805,74 @@ footer {
             <option>Adults (18+)</option>
           </select>
         </div>
-        <div class="field">
+        <div class="fld">
           <label>Message</label>
           <textarea placeholder="Tell us about your goals..."></textarea>
         </div>
-        <button type="submit" class="btn btn-filled" style="width:100%; cursor:pointer; font-size:1.05rem;">
-          Send Message →
-        </button>
+        <button type="submit" class="submit-btn">Send Message →</button>
       </form>
     </div>
 
-    <div class="contact-right">
-      <div class="sec-header">
-        <span class="sec-num" style="color:#333;">—</span>
-        <h2 class="sec-title" style="color:var(--white);">Contact</h2>
+    <div class="contact-info-side">
+      <div class="c-block">
+        <div class="c-label">Phone / WhatsApp</div>
+        <a href="tel:3226391906" class="c-val">322 639 1906</a>
       </div>
-      <p class="c-intro">
-        We're always available to answer your questions and help you get started on your English journey.
-      </p>
-
-      <div class="c-items">
-        <div>
-          <div class="c-label">Phone / WhatsApp</div>
-          <a href="tel:3226391906" class="c-value">322 639 1906</a>
-        </div>
-        <div>
-          <div class="c-label">Email</div>
-          <a href="mailto:englishemergencies@gmail.com" class="c-value">englishemergencies@gmail.com</a>
-        </div>
-        <div>
-          <div class="c-label">Schedule</div>
-          <span class="c-value" style="opacity:.6; cursor:default;">Flexible Hours — By Appointment</span>
-        </div>
+      <div class="c-block">
+        <div class="c-label">Email</div>
+        <a href="mailto:englishemergencies@gmail.com" class="c-val">englishemergencies@gmail.com</a>
+      </div>
+      <div class="c-block">
+        <div class="c-label">Schedule</div>
+        <span class="c-val" style="opacity:.5; cursor:default;">Flexible Hours · By Appointment</span>
       </div>
 
-      <div class="big-slogan">
-        <div class="big-slogan-text">NO<br>EXCUSES.</div>
+      <div class="big-slogan-area">
+        <div class="big-slogan-word">No<br>Excuses.</div>
         <p class="big-slogan-sub">Your English journey starts today.</p>
       </div>
     </div>
-
   </div>
-</div>
+</section>
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-logo">English Emergencies</div>
-    <div class="footer-copy">© 2025 English Emergencies &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp; No Excuses</div>
-  </div>
+  <div class="f-logo">English Emergencies</div>
+  <div class="f-copy">© 2025 · All rights reserved · No Excuses</div>
 </footer>
 
 <script>
+  /* custom cursor */
+  const cur = document.getElementById('cur');
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .prog-row, .s-cell, .m-pill').forEach(el => {
+    el.addEventListener('mouseenter', () => { cur.style.width='34px'; cur.style.height='34px'; });
+    el.addEventListener('mouseleave', () => { cur.style.width='18px'; cur.style.height='18px'; });
+  });
+
+  /* form */
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('[type="submit"]');
+    const btn = e.target.querySelector('.submit-btn');
     btn.textContent = '✓ Message Sent!';
-    btn.style.background = '#222';
-    setTimeout(() => {
-      btn.textContent = 'Send Message →';
-      btn.style.background = '';
-      e.target.reset();
-    }, 3000);
+    setTimeout(() => { btn.textContent = 'Send Message →'; e.target.reset(); }, 3000);
   }
 
   /* scroll reveal */
-  const obs = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (en.isIntersecting) {
-        en.target.style.transition = 'opacity .65s ease, transform .65s ease';
+        en.target.style.transition = 'opacity .7s ease, transform .7s ease';
         en.target.style.opacity = '1';
         en.target.style.transform = 'none';
         obs.unobserve(en.target);
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
