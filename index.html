@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +22,7 @@
     color: var(--black);
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
+    font-size: 18px;
   }
 
   /* ── NAV ── */
@@ -66,7 +68,7 @@
   nav ul a {
     text-decoration: none;
     color: var(--black);
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -88,7 +90,7 @@
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     padding-top: 72px;
     border-bottom: 1px solid var(--black);
   }
@@ -102,7 +104,7 @@
   }
 
   .hero-tag {
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -137,7 +139,7 @@
   }
 
   .hero-sub {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #555;
     line-height: 1.65;
     max-width: 400px;
@@ -186,7 +188,7 @@
     background: var(--black);
     color: var(--white);
     padding: 0.9rem 2rem;
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -203,7 +205,7 @@
     background: transparent;
     color: var(--black);
     padding: 0.9rem 2rem;
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -272,7 +274,7 @@
   }
 
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #aaa;
@@ -347,7 +349,7 @@
   }
 
   .program-desc {
-    font-size: 0.88rem;
+    font-size: 1rem;
     color: #555;
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -357,7 +359,7 @@
 
   .program-tag {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.88rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     border: 1px solid var(--black);
@@ -413,7 +415,7 @@
 
   .method-right { color: #aaa; font-weight: 300; line-height: 1.8; }
 
-  .method-right p { margin-bottom: 1.2rem; font-size: 0.95rem; }
+  .method-right p { margin-bottom: 1.2rem; font-size: 1.1rem; }
 
   .method-pills {
     display: flex;
@@ -425,7 +427,7 @@
   .pill {
     border: 1px solid #444;
     color: #aaa;
-    font-size: 0.72rem;
+    font-size: 0.9rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.4rem 1rem;
@@ -454,7 +456,7 @@
 
   .marquee-item {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.4rem;
     letter-spacing: 0.18em;
     color: #666;
     flex-shrink: 0;
@@ -487,7 +489,7 @@
   .contact-detail { display: flex; flex-direction: column; gap: 2rem; margin-top: 2.5rem; }
 
   .contact-label {
-    font-size: 0.7rem;
+    font-size: 0.88rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #666;
@@ -495,7 +497,7 @@
   }
 
   .contact-value {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--white);
     text-decoration: none;
     font-weight: 400;
@@ -511,7 +513,7 @@
 
   .form-group label {
     display: block;
-    font-size: 0.72rem;
+    font-size: 0.88rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--gray);
@@ -526,7 +528,7 @@
     border: 1px solid #ddd;
     background: transparent;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--black);
     outline: none;
     border-radius: 0;
@@ -562,7 +564,7 @@
     letter-spacing: 0.15em;
   }
 
-  .footer-copy { font-size: 0.75rem; color: #555; }
+  .footer-copy { font-size: 1rem; color: #555; }
 
   /* ── FADE-UP ── */
   .fade-up {
@@ -810,7 +812,7 @@
       </div>
       <div>
         <div class="contact-label">Email</div>
-        <a href="mailto:englishemergencies@gmail.com" class="contact-value">englishemergencies@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#3b5e555c575248535e565e495c5e5558525e487b5c565a525715585456" class="contact-value"><span class="__cf_email__" data-cfemail="22474c454e4b514a474f475045474c414b475162454f434b4e0c414d4f">[email&#160;protected]</span></a>
       </div>
       <div>
         <div class="contact-label">Schedule</div>
@@ -835,7 +837,7 @@
   <div class="footer-copy">© 2025 English Emergencies · All rights reserved · No Excuses</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
@@ -858,13 +860,4 @@
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.program-card, .stat, .method-left, .method-right, .contact-detail > div').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    io.observe(el);
-  });
-</script>
-</body>
-</html>
+  }, { thres
