@@ -629,10 +629,7 @@ footer {
 /* ══════════════════════════════
    REVEAL ANIMATION
 ══════════════════════════════ */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-}
+
 
 </style>
 </head>
@@ -671,7 +668,7 @@ footer {
 </section>
 
 <!-- ── INTRO ── -->
-<div class="intro reveal">
+<div class="intro">
   <div class="intro-label">EE</div>
   <p class="intro-text">
     Professional English training for <strong>children, teens &amp; adults.</strong><br>
@@ -686,7 +683,7 @@ footer {
     <span class="programs-tagline">By the hour · Your pace · Your progress</span>
   </div>
 
-  <div class="prog-row reveal">
+  <div class="prog-row">
     <div class="prog-num">01</div>
     <div>
       <div class="prog-name">Children</div>
@@ -701,7 +698,7 @@ footer {
     </div>
   </div>
 
-  <div class="prog-row reveal">
+  <div class="prog-row">
     <div class="prog-num">02</div>
     <div>
       <div class="prog-name">Teens</div>
@@ -716,7 +713,7 @@ footer {
     </div>
   </div>
 
-  <div class="prog-row reveal">
+  <div class="prog-row">
     <div class="prog-num">03</div>
     <div>
       <div class="prog-name">Adults</div>
@@ -734,11 +731,11 @@ footer {
 
 <!-- ── METHODOLOGY ── -->
 <section class="method" id="method">
-  <p class="method-quote reveal">
+  <p class="method-quote">
     "Language is learned through use —<br>not memorization."
   </p>
-  <p class="method-attr reveal">The Communicative Approach</p>
-  <div class="pills reveal">
+  <p class="method-attr">The Communicative Approach</p>
+  <div class="pills">
     <span class="pill">Speaking First</span>
     <span class="pill">Real Contexts</span>
     <span class="pill">Active Listening</span>
@@ -750,15 +747,15 @@ footer {
 
 <!-- ── STATS ── -->
 <div class="stats">
-  <div class="stat-cell reveal">
+  <div class="stat-cell">
     <div class="stat-num">3</div>
     <div class="stat-label">Programs Available</div>
   </div>
-  <div class="stat-cell reveal">
+  <div class="stat-cell">
     <div class="stat-num">100%</div>
     <div class="stat-label">Communicative Method</div>
   </div>
-  <div class="stat-cell reveal">
+  <div class="stat-cell">
     <div class="stat-num">0</div>
     <div class="stat-label">Excuses Accepted</div>
   </div>
@@ -812,7 +809,7 @@ footer {
       </div>
       <div class="c-item">
         <div class="c-label">Email</div>
-        <a href="mailto:englisheergencies@gmail.com" class="c-value">englisheergencies@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#385d565f54514b505d5d4a5f5d565b515d4b785f55595154165b5755" class="c-value"><span class="__cf_email__" data-cfemail="65000b02090c160d00001702000b060c0016250208040c094b060a08">[email&#160;protected]</span></a>
       </div>
       <div class="c-item">
         <div class="c-label">Schedule</div>
@@ -832,17 +829,11 @@ footer {
   <div class="f-copy">© 2025 · All rights reserved · No Excuses</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('.btn-submit');
     const orig = btn.textContent;
     btn.textContent = '✓ Message Sent!';
     btn.style.background = '#222';
-    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; e.target.reset(); }, 3000);
-  }
-
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-      if (en.isIntersecting) {
-        en.target.style.transition = 'opacity 0.7s ease, transform 0.7s ea
+    setTimeout(() => { btn.textCo
